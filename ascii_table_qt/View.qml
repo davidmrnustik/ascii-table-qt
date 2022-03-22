@@ -11,12 +11,12 @@ TableView {
         id: tableModel
         model: dataModel
     }
-    property var columnWidths: tableModel.getColumnWidths(asciiTable.getColumns(), tableView.width)
+    property var columnWidths: tableModel.getColumnWidths(asciiTable.getColumns(), root.width)
     columnWidthProvider: function (column) { return tableView.model ? tableView.width/tableView.model.columnCount() : 0 }
 //    columnWidthProvider: function (column) { return columnWidths[column] }
 
     onWidthChanged: {
-        tableView.columnWidths = tableModel.getColumnWidths(asciiTable.getColumns(), tableView.width)
+        tableView.columnWidths = tableModel.getColumnWidths(asciiTable.getColumns(), root.width)
         console.log(asciiTable.getColumns())
         tableView.forceLayout()
     }
